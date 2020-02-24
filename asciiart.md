@@ -1,12 +1,10 @@
 # Ascii Art
 
-To show some text in ASCII Art:
+- To show some text in ASCII Art:
 
-[Back](README.md) to Linux CheatSheets by Ireaneus
+`figlet Cheat`
 
-### figlet Cheat
-
-```bash
+```sh
   ____ _                _
  / ___| |__   ___  __ _| |_
 | |   | '_ \ / _ \/ _` | __|
@@ -15,10 +13,11 @@ To show some text in ASCII Art:
 
 ```
 
-### To have some text with color and other options: Show with a border
+- To have some text with color and other options. Show with a border:
 
-```bash
-[user@server1]$ toilet -F border Cheat
+`toilet -F border Cheat`
+
+```sh
 ┌───────────────────────────────────┐
 │                                   │
 │   mmm  #                      m   │
@@ -31,10 +30,11 @@ To show some text in ASCII Art:
 └───────────────────────────────────┘
 ```
 
-### Basic show (filled)
+- Basic show (filled):
 
-```bash
-[user@server1]$ toilet Cheat
+`toilet Cheat`
+
+```sh
    mmm  #                      m
  m"   " # mm    mmm    mmm   mm#mm
  #      #"  #  #"  #  "   #    #

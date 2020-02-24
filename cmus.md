@@ -1,16 +1,13 @@
 # cmus
+> CMUS is a Linux Commandline audio player
 
-[Back](README.md) to Linux Cheatsheets by Ireaneus
+- To add a music library location:
 
-To add a music library location
+`:add /home/username/Music/Albums`
 
-```bash
-:add /home/username/Music/Albums
-```
+- Useful keys:
 
-Useful keys
-
-```bash
+```sh
 v - stop playback
 
 b - next track

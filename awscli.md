@@ -1,15 +1,13 @@
 # AWS CLI commands
 
-[Back](README.md) to Linux CheatSheets by Ireaneus
-
-```bash
+```sh
 aws --version
 aws ec2 iam help
 ```
 
-#### AWS CLI EC2 commands
+- AWS CLI EC2 command examples:
 
-```bash
+```sh
 aws ec2 describe-security-groups --output table
 aws ec2 describe-regions --output table
 aws ec2 describe-availability-zones --output table
@@ -17,17 +15,23 @@ aws ec2 describe-instances --output table
 aws ec2 describe-images --image-id ami-6df1e514 --output table
 aws ec2 describe-key-pairs
 aws ec2 describe-security-groups --group-id sg-51d1612b --output table
-aws ec2 run-instances --image-id ami-6df1e514 --count 1 --instance-type t2.micro --key-name MyWebAWS --user-data file://my_userdata.sh --subnet-id subnet-eec66eb5 --security-group-ids sg-51d1612b
-aws ec2 describe-instance-attribute --instance-id i-054acd6b61b1b3c91 --attribute userData --output text --query "UserData.Value" | base64 --decode
 aws ec2 describe-instances --instance-id i-054acd6b61b1b3c91 --output table
-aws ec2 describe-instances --query 'Reservations[].Instances[].[Placement.AvailabilityZone,InstanceId,InstanceType,State.Name,Tags[Key=='Name'] | [0].Value]' --output table
-aws ec2 get-console-output --instance-id i-0cb92fcf5285829c1 | sed 's/\\n/\n/g' | sed 's/\\r/\r/g'
 aws ec2 terminate-instances --instance-ids i-0cb92fcf5285829c1 --dry-run
 ```
 
-#### AWS CLI IAM commands
+```sh
+aws ec2 run-instances --image-id ami-6df1e514 --count 1 --instance-type t2.micro --key-name MyWebAWS --user-data file://my_userdata.sh --subnet-id subnet-eec66eb5 --security-group-ids sg-51d1612b
 
-```bash
+aws ec2 describe-instance-attribute --instance-id i-054acd6b61b1b3c91 --attribute userData --output text --query "UserData.Value" | base64 --decode
+
+aws ec2 describe-instances --query 'Reservations[].Instances[].[Placement.AvailabilityZone,InstanceId,InstanceType,State.Name,Tags[Key=='Name'] | [0].Value]' --output table
+
+aws ec2 get-console-output --instance-id i-0cb92fcf5285829c1 | sed 's/\\n/\n/g' | sed 's/\\r/\r/g'
+```
+
+- AWS CLI IAM commands:
+
+```sh
 aws iam list-users
 aws iam list-groups
 aws iam list-roles
@@ -42,30 +46,37 @@ aws iam list-attached-group-policies --group-name SystemAdmin
 aws iam create-service-linked-role --aws-service-name SERVICE-NAME-URL.amazonaws.com
 ```
 
-#### AWS CLI S3 commands
+- AWS CLI S3 commands:
 
 aws s3 cp ls mb mv presign rb rm sync website
 
-```bash
+```sh
 aws s3 ls s3://mybucket
 aws s3 cp myfolder s3://mybucket/myfolder --recursive
 aws s3 sync myfolder s3://mybucket/myfolder --exclude *.tmp
 ```
 
-#### AWS CLI SSM commands
+- AWS CLI SSM commands:
 
-```bash
+```sh
 aws ssm list-documents --output table
+
 aws ssm describe-instance-information --output text --query "InstanceInformationList[*]"
+
 aws ssm send-command --document-name "AWS-RunShellScript" --comment "listing services" --instance-ids "i-0cb92fcf5285829c1" --parameters commands="service --status-all" --region us-west-2 --output text
+
 aws ssm list-command-invocations --command-id "command ID" --details
+
 aws ssm describe-document --name "AWS-RunShellScript" --query "[Document.Name,Document.Description]"
+
 aws ssm describe-document --name "AWS-RunShellScript" --query "Document.Parameters[*]"
+
 aws ssm describe-instance-information --instance-information-filter-list key=InstanceIds,valueSet=i-0cb92fcf5285829c1
+
 aws ssm describe-instance-information --instance-information-filter-list key=AgentVersion,valueSet=LATEST
 ```
 
-#### AWS CLI All Resources
+- AWS CLI All Resources:
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
@@ -91,9 +102,9 @@ aws ssm describe-instance-information --instance-information-filter-list key=Age
 | elasticbeanstalk | lex-models | s3api | cognito-identity | elastictranscoder |
 | lex-runtime | sdb |
 
-#### AWS cloudformation
+- AWS cloudformation
 
-```bash
+```sh
   create-stack
 --stack-name <value>
 [--template-body <value>]

@@ -1,12 +1,10 @@
 # Linux Academy "How to setup AWS CLI default profile"
 
-[Back](README.md) to Linux CheatSheets by Ireaneus
-
 [https://linuxacademy.com/howtoguides/20882-how-to-set-aws-cli-default-profile/](https://linuxacademy.com/howtoguides/20882-how-to-set-aws-cli-default-profile/)
 
-THIS IS A BRIEF GUIDE TO SHOW YOU HOW TO USE THE SAME AWS PROFILE EACH TIME, INSTEAD OF HAVING TO TYPE IN YOUR ACCESS KEY AND SECRET KEY OVER AND OVER AGAIN.
+>THIS IS A BRIEF GUIDE TO SHOW YOU HOW TO USE THE SAME AWS PROFILE EACH TIME, INSTEAD OF HAVING TO TYPE IN YOUR ACCESS KEY AND SECRET KEY OVER AND OVER AGAIN.
 
-```bash
+```sh
 STEP 1: Login to the AWS Console and select IAM > Users and select your admin user
 
 STEP 2: Click on the Security Credentials tab and click Create Access Key
