@@ -23,25 +23,24 @@
 # REpresentational State Transfer
 #
 #      An architectural style that defines a set of constraints to be
-#      used for creating web services. Web services that conform to the #      REST architectural style provide interoperability between
+#      used for creating web services. Web services that conform to the
+#      REST architectural style provide interoperability between
 #      computer systems on the internet.
 
-### CRUD
+# CRUD - Create Read Update & Delete
 
-*Create Read Update & Delete*
+# HTTP Methods - POST=Create GET=Read PUT=Update DELETE=Delete
 
-### HTTP Methods
+# JSON - JavaScript Object Notation
 
-*POST=Create GET=Read PUT=Update DELETE=Delete*
+- Definition:
+#      An open-standard file format that uses human-readable text to
+#      transmit data objects consisting of attribute-value paires and
+#      array data
 
-### JSON
+# API Token Definition:
 
-### JavaScript Object Notation
-
-An open-standard file format that uses human-readable text to transmit data objects consisting of attribute-value paires and array data
-
-### API Token Definition
-
-#### Software Token
-
-Authentication security device that may be used to authorize the use of computer services. An API token is a unique identifier of an application requesting access to your service.
+# Software Token:
+#      Authentication security device that may be used to authorize the
+#      use of computer services. An API token is a unique identifier of
+#      an application requesting access to your service.
