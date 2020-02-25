@@ -25,3 +25,10 @@
 [ruser@server1]$ cd /
 cd / Permission denied
 ```
+
+```sh
+[ruser@server1]$ ssh ruser@server2
+
+[ruser@server2]$ whoami
+ruser
+```

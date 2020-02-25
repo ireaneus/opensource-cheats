@@ -103,9 +103,11 @@ A B C D ..
 [user@server1]$ cp anaconda-ks.cfg anaconda-ks.bak
 [user@server1]$ vi !^
 vi anaconda-ks.cfg
-
-[user@server1]$ !grep			# run the last grep command
 ```
+
+- run the last grep command:
+
+`[user@server1]$ !grep`
 
 - bash delete text:
 
