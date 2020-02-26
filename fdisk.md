@@ -1,9 +1,9 @@
-Usage:
+# Usage:
  fdisk [options] <disk>    change partition table
  fdisk [options] -l <disk> list partition table(s)
  fdisk -s <partition>      give partition size(s) in blocks
 
-Options:
+# Options:
  -b <size>             sector size (512, 1024, 2048 or 4096)
  -c[=<mode>]           compatible mode: 'dos' or 'nondos' (default)
  -h                    print this help text
@@ -16,10 +16,10 @@ Options:
 # To display partition table
 p
 
-# To delete a partition 
+# To delete a partition
 d
 
-# To display a list of partition types 
+# To display a list of partition types
 l or L
 
 # To create a new partition
@@ -34,15 +34,17 @@ w
 # Adding a new physical disk
 lsblk
 fdisk /dev/sdd
+
 # create new partition in fdisk
 mkfs.xfs /dev/sdd1
 blkid /dev/sdd1
+
 # edit /etc/fstab
 UUID=<blkid#> /opt defaults 0 0 # 00 disable disk checking and metadata dumping
 mount -a
 df -h /opt
 
-### Extending a physical disk (vm)
+# Extending a physical disk (vm)
 1.  Unmount drive - comment out /etc/fstab entry for /dev/sdc
 2.  Increase drive physical space
 3.  parted /dev/sdc - 'p' 	#print partitions on /dev/sdc
