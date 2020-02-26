@@ -9,5 +9,6 @@
 - Clean up sheets
 - add information from my sheets to existing repos where I can
 - Once pull request approved then remove entry from this repo
-- PRs submitted for du and fdisk
+- PR submitted for fdisk
+- PR submitted to tldr for du rejected, move it over to chubin or keep
 - Clean up Docker then move down below fdisk from there
