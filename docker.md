@@ -1,4 +1,4 @@
-```sh
+# docker overview:
 
 #########  Installation methods  ############
 # https://get.docker.com/	# script to install
@@ -7,6 +7,7 @@
 ## Installation Centos
 # uninstall previous version of Docker
 
+```sh
 sudo yum remove -y docker \
 > docker-client \
 > docker-client-latest \
@@ -15,9 +16,11 @@ sudo yum remove -y docker \
 > docker-latest-logrotate \
 > docker-logrotate \
 > docker-engine
+```
 
-# Add utilities for Docker
+# Add utilities for Docker:
 
+```sh
 sudo yum install -y yum-utils \
 > device-mapper-persistent-data \
 > lvm2
@@ -25,21 +28,26 @@ sudo yum install -y yum-utils \
 sudo yum-config-manager \
 > --add-repo \
 > https://download.docker.com/linux/centos/docker-ce.repo
+```
 
 # Install Docker CE:
+
+```sh
 sudo yum -y install docker-ce
 sudo systemctl start docker && sudo systemctl enable docker
 sudo usermod -aG docker cloud_user
+```
+
 #########  Installation methods  ############
 
-
 #########  Docker Commands  ##########
-docker -h | more
-Usage:	docker [OPTIONS] COMMAND
+`docker -h | more`
+
+# Usage: docker [OPTIONS] COMMAND
 
 A self-sufficient runtime for containers
 
-Options:
+# Options:
       --config string      Location of client config files (default "/home/cloud_user/.docker")
   -D, --debug              Enable debug mode
   -H, --host list          Daemon socket(s) to connect to
@@ -51,7 +59,7 @@ Options:
       --tlsverify          Use TLS and verify the remote
   -v, --version            Print version information and quit
 
-Management Commands:
+# Management Commands:
   builder     Manage builds
   config      Manage Docker configs
   container   Manage containers
@@ -69,15 +77,15 @@ Management Commands:
   volume      Manage volumes
 
 # Example of using management commands
-docker image ls --help
-Usage:	docker image ls [OPTIONS] [REPOSITORY[:TAG]]
+`docker image ls --help`
 
-List images
+# Usage: docker image ls [OPTIONS] [REPOSITORY[:TAG]]
 
-Aliases:
-  ls, images, list
+> List images
 
-Options:
+# Aliases: ls, images, list
+
+# Options:
   -a, --all             Show all images (default hides intermediate images)
       --digests         Show digests
   -f, --filter filter   Filter output based on conditions provided
@@ -199,7 +207,6 @@ docker container ls -a
 docker container logs <containerID>
 ####  Docker container Logging  ####
 
-
 ####  Docker container management  ####
 
 docker container rm <container id/name>
@@ -224,7 +231,6 @@ docker pull username/repository:tag
 docker container top <name>
 docker container stats <name>
 
-
 ####  docker ports  ####
 # Exposing ports
 docker container run -d --expose 3000 nginx	# port 80 and 3000 exposed, nothing mapped to 3000
@@ -247,7 +253,6 @@ docker port WebServer1 $CONTAINERPORT
 docker run -d -p 8080:80 8443:443 --name=WebServer2 nginx:latest
 elinks localhost:8080
 ####  docker ports  ####
-
 
 ### docker container volumes
 docker volume ls
@@ -308,6 +313,7 @@ cat /etc/resolv.conf
 docker container run -d --name network-test02 --ip 10.1.4.102 --network br04 nginx
 docker container inspect network-test02 | grep IPAddr
 docker container inspect network-test04
+
 # network 2 containers
 docker network create -d bridge --internal localhost
 
@@ -327,7 +333,6 @@ docker container inspect private-nginx
 
 ####  Docker Networking  ####
 
-
 ####  Docker Storage  ####
 Non-persistent
 Persistent
@@ -345,6 +350,8 @@ docker volume prune or rm
 docker volume ls
 
 # Docker bind mounts
+
+```sh
 mkdir target		# localhost
 docker container run -d \
 > --name nginx-bind-mount1 \
@@ -355,8 +362,9 @@ docker container run -d \
 > --name nginx-bind-mount2 \
 > -v "$(pwd)"/target2:/app \
 > nginx
+```
 
-bind mount can be used for configuration files.
+# bind mount can be used for configuration files.
 
 docker container run -d \
  --name nginx-volume1 \
@@ -364,6 +372,3 @@ docker container run -d \
  nginx
 
 ####  Docker Storage  ####
-
-
-```
