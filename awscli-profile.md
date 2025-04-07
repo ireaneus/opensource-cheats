@@ -1,43 +1,59 @@
-# Linux Academy "How to setup AWS CLI default profile"
+# 🚀 AWS CLI Profile Setup Cheat Sheet
 
-[https://linuxacademy.com/howtoguides/20882-how-to-set-aws-cli-default-profile/](https://linuxacademy.com/howtoguides/20882-how-to-set-aws-cli-default-profile/)
+## 🔹 Why Use an AWS Profile?
+Setting up an **AWS CLI profile** allows you to store and use AWS credentials without repeatedly entering your **Access Key** and **Secret Key**. This makes authentication easier and more secure.
 
->THIS IS A BRIEF GUIDE TO SHOW YOU HOW TO USE THE SAME AWS PROFILE EACH TIME, INSTEAD OF HAVING TO TYPE IN YOUR ACCESS KEY AND SECRET KEY OVER AND OVER AGAIN.
+📌 **Official Guide:** [How to Set AWS CLI Default Profile](https://linuxacademy.com/howtoguides/20882-how-to-set-aws-cli-default-profile/)
 
+---
+
+## 📌 Prerequisites
+- **An AWS IAM user** with programmatic access.
+- **Python 3.6+** installed.
+- **pip (Python package manager)** installed.
+
+---
+
+## 🏗️ Step-by-Step AWS CLI Profile Setup
+
+## **🔹 Step 1: Create an Access Key**
+1. Log in to the **AWS Console**.
+2. Go to **IAM > Users**, and select your user.
+3. Click on the **Security Credentials** tab.
+4. Click **Create Access Key**.
+5. **Download the `.csv` file** and store it securely.
+
+---
+
+## **🔹 Step 2: Install AWS CLI**
+## **On Mac/Linux:**
 ```sh
-STEP 1: Login to the AWS Console and select IAM > Users and select your admin user
+curl -O https://bootstrap.pypa.io/get-pip.py
+python3 get-pip.py --user
+pip3 install awscli --upgrade --user
+```
 
-STEP 2: Click on the Security Credentials tab and click Create Access Key
+## **🔹 Step 3: Add AWS CLI to Your PATH**
+```sh
+export PATH=~/.local/bin:$PATH
+```
 
-STEP 3: Click on Download .csv file, download it to your local machine for later use and close the dialog box
+## **🔹 Step 4: Verify AWS CLI Installation**
+```sh
+aws --version
+```
 
-STEP 4: Install Python 3.6 from the downloads page of Python.org
+## **🔹 Step 5: Configure AWS Profile**
+```sh
+aws configure
+```
+### You’ll be prompted to enter:
+- AWS Access Key ID (from .csv file)
+- AWS Secret Access Key (from .csv file)
+- Default region name (e.g., us-east-1, us-west-2)
+- Default output format (leave blank or enter json, yaml, text, or table)
 
-STEP 5: Install pip with the commands “curl -O https://bootstrap.pypa.io/get-pip.py” and “python3 get-pip.py –user”
-
-STEP 6: Use pip to install the AWS CLI with the command “pip3 install awscli –upgrade –user”
-
-STEP 7: Add AWS CLI to your command line path by running the command “export PATH=/Users/<username>/Library/Python/3.6/bin:$PATH”
-
-STEP 8: Type “aws –version” to verify that AWS CLI has been installed
-
-STEP 9: Type “aws configure” and enter your AWS Access Key and Secret Access Key using the .csv from STEP 3
-
-STEP 10: Enter your default region name (i.e. us-east-1) and leave the Default output format blank (just hit enter)
-
-STEP 11: Edit your local credential file by typing “vim ~/.aws/credentials
-
-STEP 12: Change the word default (between brackets) to your aws username (i.e. ec2-user), save and quit vim
-
-STEP 13: Export your default profile by typing the command “AWS_DEFAULT_PROFILE=<username>” (i.e. AWS_DEFAULT_PROFILE=ec2-user) and hit enter
-
-STEP 14: Create a public/private SSH key by typing the command “ssh-keygen” and hit Enter
-
-STEP 15: Hit Enter again to save the key in the default location and enter a passphrase for your key (recommended)
-
-STEP 16: Add your key to the ssh agent by typing the command “ssh-agent bash” followed by “ssh-add ~/.ssh/id_rsa”
-
-STEP 17: enter the passphrase you created in STEP 15
-
-DONE!! You have now configured your terminal to communicate with your aws profile and you can login to your EC2 instance with the public key you just created!
+## 🔹 Step 6: Verify Profile Configuration
+```sh
+cat ~/.aws/credentials
 ```
