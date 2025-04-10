@@ -1,5 +1,3 @@
-Here’s a **DevOps Cheatsheet** in **Markdown format**, structured similarly to the previous ones, with clear definitions and best practices.
-
 ---
 
 # 🚀 DevOps Cheat Sheet
