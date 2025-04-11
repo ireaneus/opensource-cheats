@@ -1,42 +1,181 @@
-# Ansible
+# 🧰 Ansible Installation & Bootstrap Setup Guide (Kubuntu / Ubuntu-Based)
 
---- 
+This guide walks you through installing Ansible, configuring your environment, and bootstrapping managed hosts with a dedicated automation user.
 
-## Ansible install and configure:
+---
 
-```bash
-[user@server1] sudo yum install python python-pip python-devel openssl git ansible
-[user@server1] sudo adduser ansible
-[user@server1] sudo passwd ansible
-```
-
-## Add user ansible to wheel:
+## 📦 Step 1: Install Ansible on Your Control Node
 
 ```bash
-[user@server1] sudo visudo - %wheel nopasswd
-[user@server1] su - ansible
-[ansible@server1] ssh-keygen
-[ansible@server1] ssh-copy-id localhost
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible
 ```
 
-## Adduser ansible nodes:
+---
+
+## 📁 Step 2: Set Up Project Structure
+
+Create your working project directory:
 
 ```bash
-[ansible@server1] ssh-copy-id <nodes>
-[ansible@server1] vim /etc/ansible/ansible.cfg
+mkdir -p ~/Public/ansible-project/playbooks
+cd ~/Public/ansible-project
 ```
+
+Add an Ansible config file:
 
 ```ini
-sudo_users root
+# ansible.cfg
+[defaults]
+inventory = hosts.ini
+remote_user = ansible
+host_key_checking = False
+private_key_file = ~/.ssh/id_rsa
+
+[privilege_escalation]
+become = True
+become_method = sudo
 ```
 
-```bash
-[ansible@server1] vim /etc/ansible/hosts
-```
+---
+
+## 🖥️ Step 3: Create and Edit Inventory File
+
+Create `hosts.ini`:
 
 ```ini
-localhost
+[bootstrap]
+laptop1 ansible_host=192.168.12.35 ansible_user=david
+
+[control]
+ansible_control ansible_host=192.168.12.63 ansible_user=ansible
+
+[remote]
+laptop1 ansible_host=192.168.12.35 ansible_user=ansible
+
+[local]
+localhost ansible_connection=ssh ansible_user=ansible
+
+[all:children]
+bootstrap
+control
+remote
+local
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
 ```
+
+> ⚠️ During bootstrap, use `ansible_user=david` under `[bootstrap]`, then switch back to `ansible_user=ansible` after the `ansible` user is configured.
+
+---
+
+## 🔐 Step 4: Confirm SSH Key Access (Passwordless)
+
+Ensure the `david` user can connect to each target system **without password**:
+
+```bash
+ssh david@192.168.12.35
+```
+
+If it works, you’re good to bootstrap.
+
+---
+
+## 🚀 Step 5: Bootstrap the `ansible` User with a Playbook
+
+### File: `playbooks/bootstrap-ansible-user.yml`
+
+```yaml
+---
+- name: Bootstrap ansible user on managed hosts
+  hosts: bootstrap
+  become: true
+  vars:
+    ansible_ssh_pub_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+    new_user: ansible
+
+  tasks:
+    - name: Create ansible user
+      user:
+        name: "{{ new_user }}"
+        shell: /bin/bash
+        groups: sudo
+        append: yes
+        create_home: yes
+
+    - name: Create .ssh directory
+      file:
+        path: "/home/{{ new_user }}/.ssh"
+        state: directory
+        mode: '0700'
+        owner: "{{ new_user }}"
+        group: "{{ new_user }}"
+
+    - name: Copy SSH key for ansible user
+      authorized_key:
+        user: "{{ new_user }}"
+        key: "{{ ansible_ssh_pub_key }}"
+        state: present
+
+    - name: Add passwordless sudo privileges
+      copy:
+        dest: "/etc/sudoers.d/{{ new_user }}"
+        content: "{{ new_user }} ALL=(ALL) NOPASSWD:ALL\n"
+        owner: root
+        group: root
+        mode: '0440'
+```
+
+---
+
+## 🧪 Step 6: Run Bootstrap (Dry-Run Optional)
+
+### Dry-run test:
+```bash
+ansible-playbook -i hosts.ini playbooks/bootstrap-ansible-user.yml -u david --check --diff
+```
+
+### Run for real:
+```bash
+ansible-playbook -i hosts.ini playbooks/bootstrap-ansible-user.yml -u david
+```
+
+---
+
+## ✅ Step 7: Update `hosts.ini` to Use the `ansible` User
+
+```ini
+[remote]
+laptop1 ansible_host=192.168.12.35 ansible_user=ansible
+```
+
+Now you're ready to automate with the new dedicated `ansible` user.
+
+---
+
+## 🧪 Step 8: Test All Systems
+
+```bash
+ansible all -m ping
+```
+
+or specify the inventory directly:
+
+```bash
+ansible -i hosts.ini all -m ping
+```
+
+You should get `pong` responses from all your systems.
+
+---
+
+Let me know if you want a follow-up playbook template for system updates, package installs, or service checks.
+
+
+
 
 ## Ansible Options:
 
