@@ -1,4 +1,4 @@
-# 🧰 Ansible Installation & Bootstrap Setup Guide (Kubuntu / Ubuntu-Based)
+# 🧰 Ansible Installation & Bootstrap Setup Guide
 
 This guide walks you through installing Ansible, configuring your environment, and bootstrapping managed hosts with a dedicated automation user.
 
