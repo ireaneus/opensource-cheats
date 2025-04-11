@@ -1,4 +1,4 @@
-# 🧰 Ansible Installation & Bootstrap Setup Guide (Kubuntu / Ubuntu-Based)
+# 🧰 Ansible Installation & Bootstrap Setup Guide
 
 This guide walks you through installing Ansible, configuring your environment, and bootstrapping managed hosts with a dedicated automation user.
 
@@ -179,11 +179,6 @@ ansible -i hosts.ini all -m ping
 You should get `pong` responses from all your systems.
 
 ---
-
-Let me know if you want a follow-up playbook template for system updates, package installs, or service checks.
-
-
-
 
 ## Ansible Options:
 
