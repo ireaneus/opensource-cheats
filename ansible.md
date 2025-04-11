@@ -172,11 +172,6 @@ You should get `pong` responses from all your systems.
 
 ---
 
-Let me know if you want a follow-up playbook template for system updates, package installs, or service checks.
-
-
-
-
 ## Ansible Options:
 
 | Arguments | Description
