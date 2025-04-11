@@ -114,6 +114,14 @@ If it works, you’re good to bootstrap.
         owner: "{{ new_user }}"
         group: "{{ new_user }}"
 
+    - name: Create Downloads directory
+      file:
+        path: "/home/{{ new_user }}/Downloads"
+        state: directory
+        mode: '0755'
+        owner: "{{ new_user }}"
+        group: "{{ new_user }}"
+
     - name: Copy SSH key for ansible user
       authorized_key:
         user: "{{ new_user }}"
