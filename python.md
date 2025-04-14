@@ -1,5 +1,3 @@
-```python
-
 # Desc: Python is a high-level programming language.
 
 # Basic example of server with python
@@ -84,5 +82,3 @@ pipenv shell
  * Debugger is active!
  * Debugger PIN: 332-333-866
 
-
-```
