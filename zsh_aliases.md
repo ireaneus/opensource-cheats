@@ -11,7 +11,6 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias home='cd ~'
 alias reload='source ~/.zshrc'
 
 ##########################
@@ -125,4 +124,6 @@ alias now='date +"%Y-%m-%d %H:%M:%S"'
 alias wgetp='wget --progress=bar'
 alias json='python3 -m json.tool'
 alias qfind='find . -type f -name'  # Usage: qfind "*.conf"
-alias reload='source ~/.zshrc'
+alias bc='batcat '
+alias glzsh='glow ~/Public/opensource-cheats/zsh_aliases.md'
+
