@@ -11,6 +11,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias a='alias | grep -i '
 alias reload='source ~/.zshrc'
 
 ##########################
@@ -72,7 +73,7 @@ alias rgx='rg -t py -g "!tests/*"'                # Exclude test folder in Pytho
 alias hist='fc -ln -100'
 alias hgrep='history | grep'
 alias hsort='history | sort | uniq -c | sort -nr | head -n 20'
-alias htop='history | awk "{CMD[\$2]++} END { for(a in CMD)print CMD[a] \" \" a}" | sort -rn | head'
+alias hitop='history | awk "{CMD[\$2]++} END { for(a in CMD)print CMD[a] \" \" a}" | sort -rn | head'
 
 # timestamped history with command numbers
 alias hts='history 0 | awk '\''{print strftime("%F %T", $1), $2, $3, $4, $5}'\'''
