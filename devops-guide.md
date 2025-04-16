@@ -1,5 +1,3 @@
-
-```markdown
 # ⚙️ DevOps Guide (Diagram-Enhanced)
 
 ---
