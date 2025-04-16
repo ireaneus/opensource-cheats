@@ -1,5 +1,21 @@
 # 🛡️ SSH Cheatsheet
 
+## 📑 Table of Contents
+
+- [🔧 Basic SSH Usage](#-basic-ssh-usage)
+- [⚙️ SSH Config (`~/.ssh/config`)](#️-ssh-config-sshsshconfig)
+- [🔐 Key-Only Login Setup (Disables Password)](#-key-only-login-setup-disables-password)
+- [🧠 Known Hosts](#-known-hosts)
+- [🔀 ProxyJump (SSH via Jump Host)](#-proxyjump-ssh-via-jump-host)
+- [🛠 Useful SSH Features](#-useful-ssh-features)
+- [📦 File Transfers](#-file-transfers)
+- [🖥 Remote Commands and Scripting](#-remote-commands-and-scripting)
+- [🧰 SSH Server Setup & Management](#-ssh-server-setup--management)
+- [🔐 Host Restrictions](#-host-restrictions)
+- [🧪 Miscellaneous](#-miscellaneous)
+- [📚 Resources](#-resources)
+
+
 ## 🔧 Basic SSH Usage
 
 ```bash
