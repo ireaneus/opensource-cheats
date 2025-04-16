@@ -15,6 +15,13 @@ alias a='alias | grep -i '
 alias reload='source ~/.zshrc'
 
 ##########################
+# Markdown Viewer pandoc bat
+##########################
+mdview() {
+    pandoc "$1" -t plain | batcat --paging=always
+}
+
+##########################
 # 🐍 Python
 ##########################
 alias python='python3'
