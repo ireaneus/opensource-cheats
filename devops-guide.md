@@ -1,4 +1,15 @@
-# ⚙️ DevOps Guide (Diagram-Enhanced)
+## 📑 Table of Contents
+
+- [🧭 What is DevOps?](#what-is-devops)
+- [🔁 DevOps Lifecycle](#devops-lifecycle)
+- [🧱 Core DevOps Principles](#core-devops-principles)
+- [🛠️ DevOps Toolchain Overview](#devops-toolchain-overview)
+- [🧪 CI/CD Pipeline Diagram](#cicd-pipeline-diagram)
+- [🔧 DevOps Practices Summary](#devops-practices-summary)
+- [🧠 Culture Matters](#culture-matters)
+- [🌍 Real-World DevOps Workflow](#real-world-devops-workflow)
+- [🔍 DevOps vs Traditional IT](#devops-vs-traditional-it)
+- [📚 Learn More](#learn-more)# ⚙️ DevOps Guide (Diagram-Enhanced)
 
 ---
 
